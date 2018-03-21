@@ -1,0 +1,14 @@
+{
+	"name": "/stampdutycalculator",
+	"description": "Calculates UK Stamp Duty",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Robert Games",
+			"homepage": "https://padmedia.co.uk"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
