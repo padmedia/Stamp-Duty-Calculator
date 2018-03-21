@@ -77,3 +77,30 @@ For example:
 	{{ stampDuty }}
 {% endif %}
 ```
+
+## Ajax form submissions
+You can optionally post the stamp duty calculator submissions over Ajax if you’d like. Just send a POST request to your site with all of the same data that would normally be sent:
+
+```
+var $sdltCalc = $('#stampDutyCalculator');
+
+$sdltCalc.submit(function(e) {
+
+	// Remove existing Messages
+	$('.sdltError,.sdltResult').remove();
+
+	// Get the post data
+	var data = $(this).serialize();
+
+	$.post('/', data, function(response) {
+
+		if (response.success) {
+			$sdltCalc.append('<div class="sdltResult"><p>Stamp Duty: <strong>' + response.stampDuty + '</strong></p></div>');
+		} else {
+			$sdltCalc.append('<div class="sdltError"><p>Sorry, an error occured. Please try refreshing the page.</p></div>')
+		}
+
+	});
+
+});
+```
